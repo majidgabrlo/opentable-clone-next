@@ -3,10 +3,10 @@ import Link from "next/link"
 
 type SearchSideBarPropsType = {
     locations: Location[]
-    cusines: Cuisine[]
-    searchParams: { location?: string, cusine?: string, price?: PRICE }
+    cuisines: Cuisine[]
+    searchParams: { location?: string, cuisine?: string, price?: PRICE }
 }
-function SearchSideBar({ locations, cusines, searchParams }: SearchSideBarPropsType) {
+function SearchSideBar({ locations, cuisines, searchParams }: SearchSideBarPropsType) {
     const prices = [
         { className: "border w-full text-reg font-light rounded-l p-2", label: '$', price: PRICE.CHEAP },
         { className: "border w-full text-reg font-light p-2", label: '$$', price: PRICE.REGULAR },
@@ -30,16 +30,16 @@ function SearchSideBar({ locations, cusines, searchParams }: SearchSideBarPropsT
             </div>
             <div className="border-b pb-4 mt-3 capitalize">
                 <h1 className="mb-2">Cuisine</h1>
-                {cusines.map(cusine =>
+                {cuisines.map(cuisine =>
                     <Link
                         href={{
                             pathname: '/search', query: {
                                 ...searchParams,
-                                cusine: cusine.name
+                                cuisine: cuisine.name
                             }
                         }}
-                        key={cusine.id}>
-                        <p className="font-light text-reg">{cusine.name}</p>
+                        key={cuisine.id}>
+                        <p className="font-light text-reg">{cuisine.name}</p>
                     </Link>
                 )}
             </div>

@@ -1,5 +1,6 @@
 import Price from "@/app/components/Price";
-import { Cuisine, PRICE, Location } from "@prisma/client";
+import Stars from "@/app/components/Stars";
+import { Cuisine, PRICE, Location, Review } from "@prisma/client";
 import Link from "next/link"
 
 type RestaurantCardPropsType = {
@@ -10,9 +11,20 @@ type RestaurantCardPropsType = {
     location: Location;
     price: PRICE;
     slug: string;
+    reviews: Review[]
+}
+
+function showScore(score: number) {
+    if (score >= 4) return "Awesome"
+    if (score >= 3) return "Good"
+    if (score >= 2) return "Not Recommend"
+    if (score > 0) return "Trash"
+    return "No rating"
 }
 
 function RestaurantCard({ restaurant }: { restaurant: RestaurantCardPropsType }) {
+    const restaurantRating = restaurant.reviews.reduce((prev, review) => review.rating + prev, 0) / restaurant.reviews.length
+    
     return (
         <div className="border-b flex pb-5">
 
@@ -25,8 +37,8 @@ function RestaurantCard({ restaurant }: { restaurant: RestaurantCardPropsType })
                 <div className="pl-5">
                     <h2 className="text-3xl">{restaurant.name}</h2>
                     <div className="flex items-start">
-                        <div className="flex mb-2">*****</div>
-                        <p className="ml-2 text-sm">Awesome</p>
+                        <div className="flex mb-2"><Stars reviews={restaurant.reviews} /></div>
+                        <p className="ml-2 text-sm">{showScore(restaurantRating)}</p>
                     </div>
                     <div className="mb-9">
                         <div className="font-light flex text-reg">
