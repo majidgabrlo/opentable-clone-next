@@ -55,10 +55,7 @@ function AuthSignUp({ handleClose }: { handleClose: () => void }) {
         onSubmit: async (values) => {
             await signUp({ ...values },handleClose)
         },
-    });    
-
-    console.log(data);
-    
+    });     
 
     return (
         <AuthFieldContainer headerTitle="Create an account" headerDescription="Create your OpenTable account">

@@ -8,7 +8,6 @@ import AuthModal from "./AuthModal"
 function Navbar() {
     const { loading, data } = useUser()
     const { signOut } = useAuth()
-    console.log(data, loading);
 
     return (
         <nav className="bg-white p-2 flex justify-between">
