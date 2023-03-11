@@ -38,7 +38,6 @@ function ReservationCard({ closeTime, openTime, slug }: ReservationCardProps) {
         return timesWithin
 
     }
-    console.log(data);
 
     const handleFindTime = async () => {
         const day = selectedDate?.toISOString().split('T')[0]

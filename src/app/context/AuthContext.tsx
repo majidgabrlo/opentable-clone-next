@@ -38,7 +38,7 @@ const AuthContext = ({ children }: { children: ReactNode }) => {
                     error: null,
                 });
             }
-            const response = await axios.get<{me:User}>("/api/auth/me", {
+            const response = await axios.get<{ me: User }>("/api/auth/me", {
                 headers: {
                     Authorization: `Bearer ${jwt}`,
                 },
