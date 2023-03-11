@@ -55,7 +55,7 @@ function Reviews({ reviews, slug }: { reviews: Review[], slug: string }) {
     
     return (
         <div>
-            {data && <div className="mt-8">
+            {data ? <div className="mt-8">
                 <div className="text-2xl font-bold">Add Your Comment</div>
                 <form onSubmit={handleSubmit}>
                     <div className="space-y-5 text-sm mt-4">
@@ -82,7 +82,9 @@ function Reviews({ reviews, slug }: { reviews: Review[], slug: string }) {
                         <button type="submit" className='uppercase bg-blue-600 px-6 text-white p-2 rounded text-lg mb-5 disabled:bg-gray-400'>Post</button>
                     </div>
                 </form>
-            </div>}
+            </div>:
+            <p className="capitalize mt-6 text-2xl font-bold">Please Login to comment</p>
+            }
             {reviews.length ?
                 <h1 className="font-bold text-3xl mt-10 mb-7 borber-b pb-5">
                     What {reviews.length} {reviews.length > 1 ? 'people are' : "person is"} saying

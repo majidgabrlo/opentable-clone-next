@@ -4,6 +4,7 @@ import validator from 'validator';
 import ReactLoading from 'react-loading'
 import { useAuth } from "../hooks/useAuth";
 import { useUser } from "../context/AuthContext";
+import { useEffect } from "react";
 
 export type FormValuesTypes = {
     first_name: string;
@@ -40,7 +41,9 @@ const validate = (values: FormValuesTypes) => {
 
 function AuthSignUp({ handleClose }: { handleClose: () => void }) {
     const { signUp } = useAuth()
-    const { error, loading,data } = useUser()
+    const { error, loading } = useUser()
+    const { setAuthState, ...restUserState } = useUser();
+
 
     const formData = useFormik({
         initialValues: {
@@ -56,6 +59,11 @@ function AuthSignUp({ handleClose }: { handleClose: () => void }) {
             await signUp({ ...values },handleClose)
         },
     });     
+
+
+    useEffect(() => {
+        setAuthState({ ...restUserState, error: null })
+    }, [])
 
     return (
         <AuthFieldContainer headerTitle="Create an account" headerDescription="Create your OpenTable account">

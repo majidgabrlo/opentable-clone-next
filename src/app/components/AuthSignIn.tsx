@@ -4,6 +4,7 @@ import validator from 'validator';
 import ReactLoading from 'react-loading'
 import { useAuth } from "../hooks/useAuth";
 import { useUser } from "../context/AuthContext";
+import { useEffect } from "react";
 
 export type FormValuesTypes = {
     email: string;
@@ -24,6 +25,7 @@ const validate = (values: FormValuesTypes) => {
 function AuthSignIn({ handleClose }: { handleClose: () => void }) {
     const { signIn } = useAuth()
     const { error, loading } = useUser()
+    const { setAuthState, ...restUserState } = useUser();
 
     const formData = useFormik({
         initialValues: {
@@ -32,9 +34,15 @@ function AuthSignIn({ handleClose }: { handleClose: () => void }) {
         },
         validate,
         onSubmit: async ({ email, password }) => {
-            await signIn(email, password,handleClose)
+            await signIn(email, password, handleClose)
         },
     });
+
+
+    useEffect(() => {
+        setAuthState({ ...restUserState, error: null })
+    }, [])
+
 
     return (
         <AuthFieldContainer headerTitle="Create an account" headerDescription="Create your OpenTable account">
@@ -56,7 +64,7 @@ function AuthSignIn({ handleClose }: { handleClose: () => void }) {
                                 {formData.touched.password && <div className="text-red-400">{formData.errors.password}</div>}
                             </div>
                         </div>
-                        <button type="submit" className='uppercase bg-blue-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400'>Sign Up</button>
+                        <button type="submit" className='uppercase bg-blue-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400'>Sign In</button>
                     </form>
                 }
             </div>

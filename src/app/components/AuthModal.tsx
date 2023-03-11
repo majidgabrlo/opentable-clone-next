@@ -9,6 +9,7 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+
     return (
         <div>
             <button
