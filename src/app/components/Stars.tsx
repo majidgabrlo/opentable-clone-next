@@ -18,7 +18,8 @@ function Stars({ reviews,rating }: { reviews?: Review[], rating?: number }) {
             }
             else { stars.push(emptyStar) }
         }
-        return stars.map(star => <Image src={star} alt="" className='w-4 h-4 mr-1' />)
+        // using index as key because we don't have special key
+        return stars.map((star,i) => <Image key={i} src={star} height={100} width={100} alt="" className='w-4 h-4 mr-1' />)
     }
     return <>{renderStars(stars)}</>
 }

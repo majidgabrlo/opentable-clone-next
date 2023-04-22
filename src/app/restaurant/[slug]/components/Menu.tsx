@@ -11,7 +11,7 @@ function Menu({ menu }: { menu: Item[] }) {
                 {menu.length ? <div className="flex flex-wrap justify-between">
                     {menu.map(item => <MenuCard key={item.id} item={item} />)}
                 </div> : <div className="flex flex-wrap justify-between">
-                    This Restaurant doesn't have a menu
+                    {`This Restaurant doesn't have a menu`}
                 </div>}
             </div>
         </main>

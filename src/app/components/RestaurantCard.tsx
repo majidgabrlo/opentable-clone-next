@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link"
 import { RestaurantCardType } from "../page";
 import Price from "./Price"
@@ -12,7 +13,7 @@ function RestaurantCard({ restaurant }: { restaurant: RestaurantCardType }) {
             >
                 <img
                     src={restaurant.main_image}
-                    alt=""
+                    alt={restaurant.name}
                     className="w-full h-36"
                 />
                 <div className="p-1">

@@ -47,7 +47,7 @@ function SearchSideBar({ locations, cuisines, searchParams }: SearchSideBarProps
                 <h1 className="mb-2">Price</h1>
                 <div className="flex text-center">
                     {prices.map(price =>
-                        <Link href={{
+                        <Link key={`${price.label} ${price.price} ${price.className}`} href={{
                             pathname: '/search', query: {
                                 ...searchParams,
                                 price: price.price

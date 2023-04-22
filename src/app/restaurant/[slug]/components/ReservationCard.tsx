@@ -13,7 +13,7 @@ type ReservationCardProps = {
 }
 
 function ReservationCard({ closeTime, openTime, slug }: ReservationCardProps) {
-    const { data, error, loading, fetchAvailabilities } = useAvailabilities()
+    const { data, loading, fetchAvailabilities } = useAvailabilities()
     const [time, setTime] = useState(openTime)
     const [numberOfPeople, setNumberOfPeople] = useState('1')
     const [selectedDate, setSelectedDate] = useState<Date | null>(new Date())

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 function Images({ images }: { images: string[] }) {
     return (
         <div>
@@ -6,7 +7,8 @@ function Images({ images }: { images: string[] }) {
             </h1>
             <div className="flex flex-wrap">
                 {images.map(image => <img
-                    className="w-56 h-44 mr-1 mb-1"
+                    className="w-full md:w-56 md:h-44 mr-1 mb-1"
+                    key={image}
                     src={image}
                     alt=""
                 />)}

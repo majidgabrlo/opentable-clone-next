@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Price from "@/app/components/Price";
 import Stars from "@/app/components/Stars";
 import { Cuisine, PRICE, Location, Review } from "@prisma/client";

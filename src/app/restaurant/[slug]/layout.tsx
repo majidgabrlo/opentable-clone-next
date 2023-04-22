@@ -5,7 +5,7 @@ function layout({ children,params }: { children: ReactNode, params: { slug: stri
     return (
         <main>
             <Header slug={params.slug} />
-            <div className="flex m-auto w-2/3 justify-between items-start 0 -mt-11">
+            <div className="md:flex m-auto md:w-2/3 justify-between items-start 0 md:-mt-11">
                 {children}
             </div>
         </main>

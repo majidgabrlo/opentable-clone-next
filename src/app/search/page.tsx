@@ -71,7 +71,7 @@ async function Search({ searchParams }: { searchParams: SearchParams }) {
             <div className="flex gap-x-4 py-4 m-auto w-2/3 justify-between items-start">
                 <SearchSideBar locations={locations} cuisines={cuisines} searchParams={searchParams} />
                 <div className="w-5/6">
-                    {restaurants.length ? restaurants.map(restaurant => <RestaurantCard restaurant={restaurant} key={restaurant.id} />) : <p>We couldn't find any restaurant around here</p>}
+                    {restaurants.length ? restaurants.map(restaurant => <RestaurantCard restaurant={restaurant} key={restaurant.id} />) : <p>{`We couldn't find any restaurant around here`}</p>}
 
                 </div>
             </div>
